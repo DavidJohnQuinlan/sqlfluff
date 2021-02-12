@@ -339,9 +339,7 @@ class FluffConfig:
     ):
         self._overrides = overrides  # We only store this for child configs
         plugin_manager = get_plugin_manager()
-        defaults = nested_combine(
-            *plugin_manager.hook.load_default_config()
-        )
+        defaults = nested_combine(*plugin_manager.hook.load_default_config())
         self._configs = nested_combine(
             defaults, configs or {"core": {}}, {"core": overrides or {}}
         )
